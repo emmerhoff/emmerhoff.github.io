@@ -28,30 +28,36 @@
 		</div>	
 		
 		<div class="box">
-			<h4 id="idh1" style=""> Oppgave 1: Hva er den primære og bakgrunnsfargen på flagget til Bangladesh? </h4>
-			<input id="idtxt1" type="text">
+			<h4 id="idh1" style=""> Oppgave 1: Hvor mange valgte menn samlet seg på Eidsvoll for å lage en </h4>
+			<input id="idtxt1" type="number">
 		</div>
 
 		<div class="box">			
-			<h4 id="idh2" style=""> Oppgave 2: Hva er hovedstaden i Litauen? </h4>
-			<input id="idr1" type="radio" name ="nRadio1" value="Tallin"> Tallin <br>
-			<input id="idr2" type="radio" name ="nRadio1" value="Vilnius"> Vilnius <br>
-			<input id="idr3" type="radio" name ="nRadio1" value="Sofia"> Sofia <br>
-			<input id="idr4" type="radio" name ="nRadio1" value="Riga"> Riga
+			<h4 id="idh2" style=""> Oppgave 2: Hvem var det "patriotene" samlet seg rundt? </h4>
+			<input id="idr1" type="radio" name ="nRadio1"> Johan Welhaven <br>
+			<input id="idr2" type="radio" name ="nRadio1""> Henrik Wergeland <br>
+			<input id="idr3" type="radio" name ="nRadio1"> Henrik Ibsen <br>
+			<input id="idr4" type="radio" name ="nRadio1"> Ivar Aasen
 		</div>
 
 		<div class="box">
 			<h4 id="idh3" style=""> Oppgave 3: Hvilken by i Asia kommer på andre plass når det kommer til antall innbyggere? (etter Tokyo) </h4>
-			<input id="idr5" type="radio" name ="nRadio2" value="New Delhi"> New Delhi <br>
-			<input id="idr6" type="radio" name ="nRadio2" value="Beijing"> Beijing <br>
-			<input id="idr7" type="radio" name ="nRadio2" value="Shanghai"> Shanghai <br>
-			<input id="idr8" type="radio" name ="nRadio2" value="Mumbai"> Mumbai
+			<input id="idr5" type="radio" name ="nRadio2"> New Delhi <br>
+			<input id="idr6" type="radio" name ="nRadio2"> Beijing <br>
+			<input id="idr7" type="radio" name ="nRadio2"> Shanghai <br>
+			<input id="idr8" type="radio" name ="nRadio2"> Mumbai
 		</div>
 
 		<div class="box">
 			<h4 id="idh4" style=""> Oppgave 4: Hvilket land i Afrika har størst landareal? </h4>
 			<input id="idtxt2" type="text">
 		</div>
+
+		<div class="box">
+			<h4 id="idh5" style=""> Oppgave 4: Hvilket land i Afrika har størst landareal? </h4>
+			<input id="idtxt3" type="text">
+		</div>
+
 		<div class="box">
 			<button id="idbtn"> RESULTAT </button>
 		</div>
@@ -76,6 +82,9 @@
 		var idh4 = document.getElementById("idh4");
 		var idtxt2 = document.getElementById("idtxt2");
 
+		var idh5 = document.getElementById("idh5");
+		var idtxt3 = document.getElementById("idtxt3");
+
 		var btn = document.getElementById("idbtn");
 
 		// Feilmeldinger og tilbakemeldinger
@@ -88,15 +97,18 @@
 		btn.addEventListener("click", myFunction);
 
 		function myFunction(){
-			if (idtxt1.value != "" && idtxt2.value != ""){
+			if (idtxt1.value != "" && idtxt2.value != "" && idtxt3.value){
 				// Feilmeldinger og poengsummering
 				idh1.style = feil;
 				idh2.style = feil;
 				idh3.style = feil;
 				idh4.style = feil;
+				idh5.style = feil;
+
+				points = 0;
 
 				// Cheaterboi :'(
-				if (idtxt1.value.toUpperCase() === "GRØNN"){
+				if (idtxt1.value === "112"){
 					idh1.style = riktig;
 					points += 1;
 				}
@@ -112,18 +124,21 @@
 					idh4.style = riktig;
 					points += 1;
 				}
+				if (idtxt3.value.toUpperCase() === "ALGERIE"){
+					idh5.style = riktig;
+					points += 1;
+				}
 
 				// Tilbakemelding farge
-				if (points === 4){
+				if (points === 5){
 					mld.style = riktig;
 				}
-				if (points != 4){
+				if (points != 5){
 					mld.style = feil;
 				}
 
 				// Tilbakemelding og nuller ut points, slik at antall poeng ikke kan overskrives
-				mld.innerHTML = "Du fikk (" + points + "/4) = " + (points/4)*100 + "%";
-				points = 0;
+				mld.innerHTML = "Du fikk (" + points + "/5) = " + (points/5)*100 + "%";
 
 			}
 			else {

@@ -150,7 +150,7 @@ hr {
 	margin: 4px;
 }
 
-input[type=text]{
+input[type=text], input[type=number]{
 	padding: 10px;
 	border-radius: 5px;
 	font-size: 110%;
@@ -177,7 +177,7 @@ button:active {
 	background-color: #fff;
 }
 
-input[type=text]:focus, button:focus{
+input[type=text]:focus, button:focus, input[type=number]:focus{
 	outline: #C8102E 2px solid;
 }
 
