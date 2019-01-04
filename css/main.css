@@ -8,7 +8,7 @@ body {
 	background-color: #D6DCE0;
 }
 
-input {
+input[type=text], input[type=number], input[type=submit], input[type=password] {
 	/* Fjerner forhåndsinstillinger til inputfields hos ulike browsere/operatvsystem. F.ek iOS */
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -72,7 +72,7 @@ label {
 	margin-bottom: 2px;
 }
 
-@media screen and (max-width: 800px){
+@media only screen and (max-width: 700px){
 	header ul {
 		display: none;
 		background-color: #e8647a;
@@ -140,6 +140,7 @@ label {
 	font-size: 150%;
 }
 
+
 .label {
 	font-size: 80%;
 	margin-left: 10px;
@@ -147,4 +148,41 @@ label {
 
 hr {
 	margin: 4px;
+}
+
+input[type=text]{
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 110%;
+	width: 50%;
+}
+
+button{
+	padding: 10px;
+	border-radius: 5px;
+	font-size: 130%;
+	width: 100%;
+	background-color: #D8203E;
+	color: #fff;
+	border: 2px solid #fff;
+}
+
+button:hover {
+	background-color: #f2a6b3;
+	color: #B8001E;
+	border: 2px solid #B8001E;
+}
+
+button:active {
+	background-color: #fff;
+}
+
+input[type=text]:focus, button:focus{
+	outline: #C8102E 2px solid;
+}
+
+#mld {
+	margin-bottom: 0;
+	margin-top: 10px;
+	font-size: 120%;
 }

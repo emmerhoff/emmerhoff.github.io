@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title> QUIZ </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
 	<link rel="shortcut icon" href="media/favicon.png" type="icon/png">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<style>
 		.quiz {color: #fff;}
 	</style>
@@ -23,10 +24,116 @@
 	<div class="container">
 		<div class="box">
 			<h1> Test deg selv! - QUIZ</h1>
+			<h3 id="mld" style=""></h3>
+		</div>	
+		
+		<div class="box">
+			<h4 id="idh1" style=""> Oppgave 1: Hva er den primære og bakgrunnsfargen på flagget til Bangladesh? </h4>
+			<input id="idtxt1" type="text">
+		</div>
+
+		<div class="box">			
+			<h4 id="idh2" style=""> Oppgave 2: Hva er hovedstaden i Litauen? </h4>
+			<input id="idr1" type="radio" name ="nRadio1" value="Tallin"> Tallin <br>
+			<input id="idr2" type="radio" name ="nRadio1" value="Vilnius"> Vilnius <br>
+			<input id="idr3" type="radio" name ="nRadio1" value="Sofia"> Sofia <br>
+			<input id="idr4" type="radio" name ="nRadio1" value="Riga"> Riga
+		</div>
+
+		<div class="box">
+			<h4 id="idh3" style=""> Oppgave 3: Hvilken by i Asia kommer på andre plass når det kommer til antall innbyggere? (etter Tokyo) </h4>
+			<input id="idr5" type="radio" name ="nRadio2" value="New Delhi"> New Delhi <br>
+			<input id="idr6" type="radio" name ="nRadio2" value="Beijing"> Beijing <br>
+			<input id="idr7" type="radio" name ="nRadio2" value="Shanghai"> Shanghai <br>
+			<input id="idr8" type="radio" name ="nRadio2" value="Mumbai"> Mumbai
+		</div>
+
+		<div class="box">
+			<h4 id="idh4" style=""> Oppgave 4: Hvilket land i Afrika har størst landareal? </h4>
+			<input id="idtxt2" type="text">
 		</div>
 		<div class="box">
-			<p> Innhold kommer senere </p>
+			<button id="idbtn"> RESULTAT </button>
 		</div>
 	</div>
+
+
+	<script>
+		// Definerer alle variabler
+		var idheader = document.getElementById("idheader");
+
+		var mld = document.getElementById("mld");
+
+		var idh1 = document.getElementById("idh1");
+		var idtxt1 = document.getElementById("idtxt1");
+
+		var idh2 = document.getElementById("idh2");
+		var idr2 = document.getElementById("idr2");
+
+		var idh3 = document.getElementById("idh3");
+		var idr5 = document.getElementById("idr5");
+
+		var idh4 = document.getElementById("idh4");
+		var idtxt2 = document.getElementById("idtxt2");
+
+		var btn = document.getElementById("idbtn");
+
+		// Feilmeldinger og tilbakemeldinger
+		var fyll = "Venligst svar på alle spørmål";
+		var riktig = "color: #0a0;";
+		var feil = "color: #f00;";
+
+		var points = 0;
+
+		btn.addEventListener("click", myFunction);
+
+		function myFunction(){
+			if (idtxt1.value != "" && idtxt2.value != ""){
+				// Feilmeldinger og poengsummering
+				idh1.style = feil;
+				idh2.style = feil;
+				idh3.style = feil;
+				idh4.style = feil;
+
+				// Cheaterboi :'(
+				if (idtxt1.value.toUpperCase() === "GRØNN"){
+					idh1.style = riktig;
+					points += 1;
+				}
+				if (idr2.checked){
+					idh2.style = riktig;
+					points += 1;
+				}
+				if (idr5.checked){
+					idh3.style = riktig;
+					points += 1;
+				}
+				if (idtxt2.value.toUpperCase() === "ALGERIE"){
+					idh4.style = riktig;
+					points += 1;
+				}
+
+				// Tilbakemelding farge
+				if (points === 4){
+					mld.style = riktig;
+				}
+				if (points != 4){
+					mld.style = feil;
+				}
+
+				// Tilbakemelding og nuller ut points, slik at antall poeng ikke kan overskrives
+				mld.innerHTML = "Du fikk (" + points + "/4) = " + (points/4)*100 + "%";
+				points = 0;
+
+			}
+			else {
+				// Feilmelding til å fylle alle felt/radioboxer
+				mld.innerHTML = fyll;
+				mld.style = feil;
+			}
+			window.location.replace("#");
+		}
+
+	</script>
 </body>
 </html>
